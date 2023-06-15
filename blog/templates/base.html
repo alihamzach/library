@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'blog/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/css/mystyle.css' %}">
+    <script src="{% static 'blog/js/jquery.js' %}"></script>
+    <script src="{% static 'blog/js/popper.min.js' %}"></script>
+    <script src="{% static 'blog/js/bootstrap.min.js' %}"></script>
+    <title>Home</title>
+</head>
+<body>
+<div class="row col-md-12 alert alert-success">
+    <div class="col-md-12">
+        <h2>Library Management System</h2>
+    </div>
+    <div class="col-md-1" style="margin-left: -150px">
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{ user.username }}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Settings</a>
+                <a class="dropdown-item" href="{% url 'user_logout' %}">Logout</a>
+            </div>
+        </div>
+{#                <a href="{% url 'user_logout' %}"><button class="btn btn-primary">Logout</button></a>#}
+    </div>
+</div>
+<div class="row col-md-12">
+
+    <div class="col-md-2">
+        <a href="{% url 'home' %}"><h3 class="alert alert-dark dashboard">Dashboard</h3></a>
+        <a href="{% url 'student_list' %}"><h6 class="alert alert-danger ">Students</h6></a>
+        <a href="{% url 'book_list' %}"><h6 class="alert alert-danger ">Books</h6></a>
+        <a href="{% url 'order_list' %}"><h6 class="alert alert-danger ">Order</h6></a>
+    </div>
+    <div class="col-md-10">
+{#    <img src="pexels-ivo-rainha-1290141.jpg" alt="" />#}
+{#    <img src="pexels-ivo-rainha-1290141.jpg" class="img-fluid" alt="Responsive image"/>#}
+        {% block content %}
+        {% endblock %}
+    </div>
+</div>
+</body>
+</html>

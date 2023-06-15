@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="col-md-12">
+        <div class="row alert alert-warning record_heading">
+            <h3>Add New Book</h3>
+        </div>
+        <form method="post" action="{% url 'add_book' %}">
+            {% csrf_token %}
+
+            <div class="form-group col-md-10 mb-2">
+                <label for="title">Title</label>
+                <input type="text" name="title" class="form-control" placeholder="title">
+            </div>
+            <div class="row">
+                <div class="form-group col-md-5 mb-2">
+                    <label for="author">Author</label>
+                    <input type="text" name="author" class="form-control" placeholder="author">
+                </div>
+                <div class="form-group col-md-5 mb-2">
+                    <label for="publisher">Publisher</label>
+                    <input type="text" name="publisher" class="form-control" placeholder="publisher">
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-5 mb-2">
+                    <label for="pages">Pages </label>
+                    <input type="text" name="pages" class="form-control" placeholder="pages">
+                </div>
+                <div class="form-group col-md-5 mb-2">
+                    <label for="price">Price </label>
+                    <input type="text" name="price" class="form-control" placeholder="price">
+                </div>
+                                <div class="form-group col-md-5 mb-2">
+                    <label for="price">Quantity</label>
+                    <input type="text" name="quantity" class="form-control" placeholder="quantity">
+                                </div>
+            </div>
+            <div class="col-md-12 ">
+                <input type="submit" class="btn btn-success create-btn" value="Create">
+            </div>
+        </form>
+    </div>
+{% endblock %}

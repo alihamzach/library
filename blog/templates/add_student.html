@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="col-md-12">
+        <div class="row alert alert-warning record_heading">
+            <h3>Add New Student</h3>
+        </div>
+        <form method="post" action="{% url 'add_student' %}">
+            {% csrf_token %}
+            <div class="row">
+                <div class="form-group col-md-5 mb-2">
+                    <label for="name">Name </label>
+                    <input type="text" name="name" class="form-control" placeholder="Name">
+                </div>
+                <div class="form-group col-md-5 mb-2">
+                    <label for="course">Course </label>
+                    <input type="text" name="course" class="form-control" placeholder="Course">
+                </div>
+            </div>
+            <div class="form-group col-md-10 mb-2">
+                <label for="address">Address </label>
+                <input type="text" name="address" class="form-control" placeholder="Address">
+            </div>
+            <div class="row">
+                <div class="form-group col-md-5 mb-2">
+                    <label for="mobile_number">Mobile Number </label>
+                    <input type="text" name="mobile_number" class="form-control" placeholder="xxxxxxxxxxx">
+                </div>
+                <div class="form-group col-md-5 mb-2">
+                    <label for="identification_number">Cnic Number </label>
+                    <input type="text" name="identification_number" class="form-control" placeholder="xxxxxxxxxxxxx">
+                </div>
+            </div>
+            <div class="col-md-12 ">
+                <input type="submit" class="btn btn-success create-btn" value="Create">
+            </div>
+        </form>
+    </div>
+{% endblock %}

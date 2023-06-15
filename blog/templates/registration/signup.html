@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'blog/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/css/mystyle.css' %}">
+    <script src="{% static 'blog/js/bootstrap.js' %}"></script>
+    <script src="{% static 'blog/js/jquery.js' %}"></script>
+    <script src="{% static 'blog/js/popper.js' %}"></script>
+    <title>Home</title>
+</head>
+<body>
+<div class="row col-md-12 alert alert-success library_heading">
+    <h2>Library Management System</h2>
+</div>
+<div class="col-md-5 offset-3">
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div style="margin-left: 185px">
+            <button class="btn btn-primary" type="submit">Sign Up</button>
+            <a class="btn btn-primary" href="{% url 'user_login' %}">Log In</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>

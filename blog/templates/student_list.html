@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="col-md-12">
+        <div class="row alert alert-warning record_heading">
+            <div class="col-md-4">
+                <h3>Manage Students</h3>
+            </div>
+            <div class="col-md-4">
+                <div class="input-group rounded">
+                    <form method="post" action="{% url 'student_list' %}">
+                        {% csrf_token %}
+                        <input type="search" value="{{ request.POST.searched }}" name="searched" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                        <button style="margin-left: 12px" class="input-group-text" id="search-addon"><i>Go</i></button>
+                    </form>
+                </div>
+            </div>
+            {% if request.user.is_staff and request.user.is_superuser %}
+                <div class="col-md-1" style="margin-left: 245px">
+                    <a href="{% url 'add_student' %}"><button type="submit" class="btn btn-success">Add</button></a>
+                </div>
+            {% endif %}
+        </div>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Course</th>
+                <th scope="col">Address</th>
+                <th scope="col">Mobile Number</th>
+                <th scope="col">Cnic Number</th>
+                <th scope="col">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for foo in student %}
+                <tr>
+                    <th>{{ foo.id }}</th>
+                    <td>{{ foo.name }}</td>
+                    <td>{{ foo.course }}</td>
+                    <td>{{ foo.address }}</td>
+                    <td>{{ foo.mobile_number }}</td>
+                    <td>{{ foo.identification_number }}</td>
+                    <td>
+                        <a href = '/edit_student/{{ foo.id }}' class="btn btn-warning btn-sm">Edit</a>
+                        {% if request.user.is_staff and request.user.is_superuser %}
+                            <form action="{% url 'delete_student' foo.id %}" method="post" class="d-inline">
+                                {% csrf_token %}
+                                <input type="submit" class="btn btn-danger" value="Delete">
+                            </form>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

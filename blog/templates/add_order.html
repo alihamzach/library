@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="col-md-12">
+        <div class="row alert alert-warning record_heading">
+            <h3>Add Order</h3>
+        </div>
+        <form action="{% url 'add_order' %}" method="post">
+            {% csrf_token %}
+            <div class="row">
+                <div class="form-group col-md-5 mb-2">
+                    <label for="student"> {{ form.student.label }} </label>
+                    {{ form.student }}
+                </div>
+                <div class="form-group col-md-5 mb-2">
+                    <label for="book_detail"> {{ form.book_detail.label }} </label>
+                    {{ form.book_detail }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-5 mb-2">
+                    <label for="booking_date"> {{ form.booking_date.label }} </label>
+                    {{ form.booking_date }}
+                </div>
+                <div class="form-group col-md-5 mb-2">
+                    <label for="from_date"> {{ form.from_date.label }} </label>
+                    {{ form.from_date }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-5 mb-2">
+                    <label for="to_date"> {{ form.to_date.label }} </label>
+                    {{ form.to_date }}
+                </div>
+                <div class="form-group col-md-5 mb-2">
+                    <label for="rent_per_day"> {{ form.rent_per_day.label }} </label>
+                    {{ form.rent_per_day }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-5 mb-2">
+                    <label for="days"> {{ form.days.label }} </label>
+                    {{ form.days }}
+                </div>
+                <div class="form-group col-md-5 mb-2">
+                    <label for="amount"> {{ form.amount.label }} </label>
+                    {{ form.amount }}
+                </div>
+            </div>
+            <div class="col-md-12 ">
+                <input type="submit" class="btn btn-success create-btn" value="Add Order">
+            </div>
+        </form>
+        <form action="{% url 'book_list' %}" method="get">
+            <div class="col-md-12 ">
+                <input type="submit" class="btn btn-success create-btn" value="Return">
+            </div>
+        </form>
+    </div>
+{% endblock %}

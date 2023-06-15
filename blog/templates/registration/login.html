@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'blog/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/css/mystyle.css' %}">
+    <script src="{% static 'blog/js/bootstrap.js' %}"></script>
+    <script src="{% static 'blog/js/jquery.js' %}"></script>
+    <script src="{% static 'blog/js/popper.js' %}"></script>
+    <title>Home</title>
+</head>
+<body>
+<div class="row col-md-12 alert alert-success library_heading">
+    <div class="col-md-11">
+        <h2>Library Management System</h2>
+    </div>
+</div>
+<div class="col-sm-5 offset-3">
+    <form method="post" action="">
+        {% csrf_token %}
+        <div class="form-outline mb-3">
+            <label class="form-label" for="username">Email </label>
+            <input type="email" name="username" class="form-control" placeholder="example@gmail.com" />
+        </div>
+        <div class="form-outline mb-4">
+            <label class="form-label" for="password">Password</label>
+            <input type="password" name="password" class="form-control" placeholder="password"/>
+        </div>
+        <div class="row col-md-12" style="margin-left: 1px">
+            <input type="submit" class="btn btn-primary mb-4" value="Login">
+            <div class="text-center">
+                <p>Not a member? <a href="{% url 'user_signup' %}">Register</a></p>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>
